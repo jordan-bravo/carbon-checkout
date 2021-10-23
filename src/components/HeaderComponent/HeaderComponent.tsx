@@ -20,7 +20,7 @@ import {
   UserAvatar20,
 } from "@carbon/icons-react";
 
-const ShoppingHeader = () => (
+export const HeaderComponent = () => (
   <HeaderContainer
     render={({ isSideNavExpanded, onClickSideNavExpand }) => (
       <Header aria-label="Carbon Tutorial">
@@ -62,5 +62,3 @@ const ShoppingHeader = () => (
     )}
   />
 );
-
-export default ShoppingHeader;
