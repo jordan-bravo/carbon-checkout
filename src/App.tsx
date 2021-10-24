@@ -3,30 +3,44 @@ import "./app.scss";
 import { Content, Grid } from "carbon-components-react";
 import ShippingPage from "./pages/ShippingPage";
 import CartPage from "./pages/CartPage";
+import PaymentPage from "./pages/PaymentPage";
+import ReviewPage from "./pages/ReviewPage";
+import CompletePage from "./pages/CompletePage";
 import HeaderComponent from "./components/HeaderComponent";
 
 const App = (): ReactElement => {
-  const [pageType, setPageType] = useState("shipping");
+  const [pageType, setPageType] = useState("cart");
+  const [count, setCount] = useState(0);
+  const [shippingInfo, setShippingInfo] = useState({
+    address: "",
+    address2: "",
+    city: "",
+    state: "",
+    zip: 0,
+  });
+  console.log(`shippingInfo`, shippingInfo);
   return (
     <>
       <HeaderComponent />
       <Content>
         <Grid>
-          {pageType === "cart" && <CartPage setPageType={setPageType} />}
-          {pageType === "shipping" && (
-            <ShippingPage setPageType={setPageType} />
+          {pageType === "cart" && (
+            <CartPage
+              count={count}
+              setCount={setCount}
+              setPageType={setPageType}
+            />
           )}
           {pageType === "shipping" && (
-            <ShippingPage setPageType={setPageType} />
+            <ShippingPage
+              setPageType={setPageType}
+              shippingInfo={shippingInfo}
+              setShippingInfo={setShippingInfo}
+            />
           )}
-          {/* TODO create PaymentPage and PaymentComponent */}
-          {/* {pageType === "payment" && (
-            <PaymentPage setPageType={setPageType} />
-          )} */}
-          {/* TODO create ReviewPage and ReviewComponent */}
-          {/* {pageType === "review" && (
-            <ReviewPage setPageType={setPageType} />
-          )} */}
+          {pageType === "payment" && <PaymentPage setPageType={setPageType} />}
+          {pageType === "review" && <ReviewPage setPageType={setPageType} />}
+          {pageType === "complete" && <CompletePage />}
         </Grid>
       </Content>
     </>

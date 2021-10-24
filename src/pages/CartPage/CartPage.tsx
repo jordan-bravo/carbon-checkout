@@ -4,13 +4,23 @@ import CartComponent from "../../components/CartComponent";
 
 type CartPageProps = {
   setPageType: Function;
+  count: number;
+  setCount: Function;
 };
 
-export const CartPage = ({ setPageType }: CartPageProps): ReactElement => {
+export const CartPage = ({
+  setPageType,
+  count,
+  setCount,
+}: CartPageProps): ReactElement => {
   return (
     <>
       <ProgressComponent progressType="cart" />
-      <CartComponent setPageType={setPageType} />
+      <CartComponent
+        count={count}
+        setCount={setCount}
+        setPageType={setPageType}
+      />
     </>
   );
 };

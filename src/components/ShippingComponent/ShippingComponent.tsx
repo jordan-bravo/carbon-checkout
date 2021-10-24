@@ -7,13 +7,18 @@ import {
   Button,
 } from "carbon-components-react";
 import { listOfUnitedStates } from "../../data/listOfUnitedStates";
+import { ShippingInfo } from "../../models/shippingInfo";
 
 type ShippingComponentProps = {
   setPageType: Function;
+  shippingInfo: ShippingInfo;
+  setShippingInfo: Function;
 };
 
 export const ShippingComponent = ({
   setPageType,
+  shippingInfo,
+  setShippingInfo,
 }: ShippingComponentProps): ReactElement => {
   return (
     <>
@@ -24,6 +29,7 @@ export const ShippingComponent = ({
             invalidText="A valid value is required"
             labelText="Address"
             placeholder="Street address"
+            onChange={(e) => setShippingInfo(e.target.value)}
           />
         </Column>
       </Row>
