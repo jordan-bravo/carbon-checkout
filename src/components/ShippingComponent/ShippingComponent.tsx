@@ -1,13 +1,7 @@
 import { ReactElement } from "react";
-import {
-  Row,
-  Column,
-  TextInput,
-  Dropdown,
-  Button,
-} from "carbon-components-react";
-import { listOfUnitedStates } from "../../data/listOfUnitedStates";
+import { Row, Column, TextInput, Button } from "carbon-components-react";
 import { ShippingInfo } from "../../models/shippingInfo";
+import SelectUnitedStateComponent from "../SelectUnitedStateComponent";
 
 type ShippingComponentProps = {
   setPageType: Function;
@@ -20,6 +14,28 @@ export const ShippingComponent = ({
   shippingInfo,
   setShippingInfo,
 }: ShippingComponentProps): ReactElement => {
+  // Change Handler Methods
+  const onChangeHandlerAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    shippingInfo.address = e.target.value;
+    setShippingInfo({ ...shippingInfo });
+  };
+  const onChangeHandlerAddress2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    shippingInfo.address2 = e.target.value;
+    setShippingInfo({ ...shippingInfo });
+  };
+  const onChangeHandlerCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    shippingInfo.city = e.target.value;
+    setShippingInfo({ ...shippingInfo });
+  };
+  const onChangeHandlerState = (e: any) => {
+    shippingInfo.state = e.target.value;
+    setShippingInfo({ ...shippingInfo });
+  };
+  const onChangeHandlerZip = (e: React.ChangeEvent<HTMLInputElement>) => {
+    shippingInfo.zip = e.target.value;
+    setShippingInfo({ ...shippingInfo });
+  };
+
   return (
     <>
       <Row>
@@ -28,8 +44,9 @@ export const ShippingComponent = ({
             id="address"
             invalidText="A valid value is required"
             labelText="Address"
+            value={shippingInfo.address}
             placeholder="Street address"
-            onChange={(e) => setShippingInfo(e.target.value)}
+            onChange={(e): void => onChangeHandlerAddress(e)}
           />
         </Column>
       </Row>
@@ -38,7 +55,9 @@ export const ShippingComponent = ({
           <TextInput
             id="address2"
             labelText="Address 2 (optional)"
+            value={shippingInfo.address2}
             placeholder="Apartment, unit, suite"
+            onChange={(e): void => onChangeHandlerAddress2(e)}
             invalidText="A valid value is required"
           />
         </Column>
@@ -48,20 +67,17 @@ export const ShippingComponent = ({
           <TextInput
             id="city"
             labelText="City"
+            value={shippingInfo.city}
             placeholder=""
             invalidText="A valid value is required"
+            onChange={(e): void => onChangeHandlerCity(e)}
           />
         </Column>
       </Row>
       <Row>
         <Column>
-          <Dropdown
-            id="state"
-            titleText="State"
-            label="Select"
-            items={listOfUnitedStates}
-            itemToString={(item) => (item ? item.label : "")}
-            // onChange={action("onChange")}
+          <SelectUnitedStateComponent
+            onChangeHandlerState={onChangeHandlerState}
           />
         </Column>
       </Row>
@@ -70,19 +86,21 @@ export const ShippingComponent = ({
           <TextInput
             id="zip"
             labelText="Zip code"
+            value={shippingInfo.zip}
             placeholder=""
             invalidText="A valid value is required"
+            onChange={(e): void => onChangeHandlerZip(e)}
           />
         </Column>
       </Row>
       <Row className="flex">
         <Column>
-          <Button kind="secondary" onClick={() => setPageType("cart")}>
+          <Button kind="secondary" onClick={(): void => setPageType("cart")}>
             Back to cart
           </Button>
         </Column>
         <Column>
-          <Button onClick={() => setPageType("payment")}>
+          <Button onClick={(): void => setPageType("payment")}>
             Proceed to payment
           </Button>
         </Column>

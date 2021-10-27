@@ -16,9 +16,10 @@ const App = (): ReactElement => {
     address2: "",
     city: "",
     state: "",
-    zip: 0,
+    zip: "",
   });
   console.log(`shippingInfo`, shippingInfo);
+  console.log(`typeof shippingInfo.zip`, typeof shippingInfo.zip);
   return (
     <>
       <HeaderComponent />

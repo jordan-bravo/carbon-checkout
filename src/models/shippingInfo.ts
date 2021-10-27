@@ -3,5 +3,5 @@ export interface ShippingInfo {
   address2: string;
   city: string;
   state: string;
-  zip: number;
+  zip: string;
 }

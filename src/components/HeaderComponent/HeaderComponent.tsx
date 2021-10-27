@@ -1,11 +1,10 @@
-import React from "react";
+import { ReactElement } from "react";
 import {
   Header,
   HeaderContainer,
   HeaderName,
   HeaderNavigation,
   HeaderMenuButton,
-  HeaderMenuItem,
   HeaderGlobalBar,
   HeaderGlobalAction,
   SkipToContent,
@@ -20,7 +19,7 @@ import {
   UserAvatar20,
 } from "@carbon/icons-react";
 
-export const HeaderComponent = () => (
+export const HeaderComponent = (): ReactElement => (
   <HeaderContainer
     render={({ isSideNavExpanded, onClickSideNavExpand }) => (
       <Header aria-label="Carbon Tutorial">
@@ -34,7 +33,7 @@ export const HeaderComponent = () => (
           Shopping Experience
         </HeaderName>
         <HeaderNavigation aria-label="Carbon Tutorial">
-          <HeaderMenuItem href="/repos">Repositories</HeaderMenuItem>
+          {/* <HeaderMenuItem href="/repos">Repositories</HeaderMenuItem> */}
         </HeaderNavigation>
         <SideNav
           aria-label="Side navigation"
@@ -43,7 +42,7 @@ export const HeaderComponent = () => (
         >
           <SideNavItems>
             <HeaderSideNavItems>
-              <HeaderMenuItem href="/repos">Repositories</HeaderMenuItem>
+              {/* <HeaderMenuItem href="/repos">Repositories</HeaderMenuItem> */}
             </HeaderSideNavItems>
           </SideNavItems>
         </SideNav>
